@@ -14,7 +14,7 @@ vector<string> splitLine(string line) {
   stringstream lineStream(line);
   string cell;
   vector<string> result;
-  while(std::getline(lineStream,cell, ','))
+  while(getline(lineStream,cell, ','))
   {
       result.push_back(cell);
   }
@@ -43,8 +43,6 @@ int main() {
 
   vector<string> headerNames = splitLine(header);
 
-  cout << header << endl;
-
   //loop until we get to the end of the file
   while (true) {
     getline(str,line);
@@ -59,6 +57,7 @@ int main() {
 
     double windSpeed = parseDouble(row[13]);
     double temperature = parseDouble(row[4]);
+    string location = row[1];
 
     //create the weather report object
 
