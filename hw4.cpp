@@ -14,7 +14,7 @@ vector<string> splitLine(string line) {
   stringstream lineStream(line);
   string cell;
   vector<string> result;
-  while(getline(lineStream,cell, ','))
+  while(getline(lineStream, cell, ','))
   {
       result.push_back(cell);
   }
@@ -59,10 +59,10 @@ int main() {
     double temperature = parseDouble(row[4]);
     string location = row[1];
 
-    //create the weather report object
+    //STUDENT: create the weather report object
 
-    //add it to the data vector
+    //STUDENT: add the weather report to the data vector
   }
 
-  //cout the number of reports
+  //STUDENT: cout the number of reports in the data vector
 }
