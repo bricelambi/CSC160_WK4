@@ -59,15 +59,29 @@ int main() {
     double temperature = parseDouble(row[4]);
     string location = row[1];
 
-    //STUDENT: create the weather report object
+    //we did this in hw4
     WeatherReport report = WeatherReport(location);
-    report.setTemperature(temperature);
     report.setWindSpeed(windSpeed);
+    report.setTemperature(temperature);
 
-    //STUDENT: add the weather report to the data vector
     data.push_back(report);
   }
 
-  //STUDENT: cout the number of reports in the data vector
-  cout << data.size() << endl;
+  //Organize by location
+  map<string,vector<WeatherReport>> byLocation;
+  for (int i = 0; i < data.size(); i++) {
+    string location = data[i].getLocation();
+    if (byLocation.count(location) <= 0) { //count function is 0 or less if key doesn't exist
+      byLocation.insert(pair<string,vector<WeatherReport>>(location, vector<WeatherReport>()));
+    }
+    byLocation[location].push_back(data[i]);
+  }
+
+  map<string, vector<WeatherReport>>::iterator it;
+  for(it = byLocation.begin(); it != byLocation.end(); it++) {
+      string location = it->first;
+      vector<WeatherReport> reports = it->second;
+      cout << location << " - " << reports.size() << endl;
+  }
+
 }
